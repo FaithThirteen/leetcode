@@ -16,6 +16,7 @@ func minDepth(root *TreeNode) int {
 			return l
 		}
 		l++
+		// 有陷阱，当左侧节点为空时，如果右侧有节点，需要遍历右侧节点
 		if node.Left == nil && node.Right != nil {
 			return f(node.Right,l)
 		}
