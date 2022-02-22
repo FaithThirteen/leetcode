@@ -77,3 +77,20 @@ func minDepth2(root *TreeNode) int {
 	}
 	return dep;
 }
+
+func minDepth3(root *TreeNode) int {
+	var f func(r *TreeNode)int
+	f = func(r *TreeNode) int {
+		if r == nil {
+			return 0
+		}
+		if r.Left == nil && r.Right != nil {
+			return f(r.Right)+1
+		}
+		if r.Right == nil && r.Left != nil {
+			return f(r.Left)+1
+		}
+		return min(f(r.Left),f(r.Right))
+	}
+	return f(root)
+}

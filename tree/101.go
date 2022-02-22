@@ -42,6 +42,7 @@ func isSymmetric1(root *TreeNode) bool {
 		if left == nil && right == nil {
 			continue
 		}
+		// 其中一个不对称，树必定不对称，如两者都不为空，则判断值是否相等
 		if left == nil || right == nil || left.Val != right.Val {
 			return false
 		}
