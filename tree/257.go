@@ -34,3 +34,34 @@ func binaryTreePaths(root *TreeNode) []string {
 	travel(root, "")
 	return res
 }
+
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func binaryTreePaths1(root *TreeNode) []string {
+
+	var res []string
+
+	var f func(r *TreeNode, s string)
+	f = func(r *TreeNode, s string)  {
+		if r.Left == nil && r.Right == nil {
+			s = s + strconv.Itoa(r.Val)
+			res = append(res,s)
+		}
+
+		s = s + strconv.Itoa(r.Val) + "->"
+		if r.Left != nil {
+			f(r.Left,s)
+		}
+		if r.Right != nil {
+			f(r.Right,s)
+		}
+	}
+	f(root,"")
+	return res
+}
