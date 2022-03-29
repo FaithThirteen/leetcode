@@ -18,7 +18,7 @@ func backtracking491(n, start int, nums, path []int) {
 		result491 = append(result491, temp)
 	}
 
-	history := make(map[int]bool)
+	history := make(map[int]bool) // 控制同层不可使用相同元素
 	for i := start; i < n; i++ {
 		// 1.如果当前的元素小于path数组最后一个元素，跳过此元素
 		// 2.同树层不可使用同一个元素

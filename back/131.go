@@ -2,6 +2,10 @@ package main
 
 import "fmt"
 
+
+
+// https://camo.githubusercontent.com/0dec5b93fd4de24b7e08293f8f52f6cebd689c2c9073a656c01f33c1e4c16890/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f32303230313131383230323434383634322e706e67
+
 var result131 [][]string
 
 func partition(s string) [][]string {
@@ -18,7 +22,7 @@ func backtracking131(start int, str string, path []string) {
 	}
 
 	for i := start; i < len(str); i++ {
-		tempStr := str[start:i+1]
+		tempStr := str[start:i+1]  // 对余下的字符串，一一枚举，如果取得的字符串为回文，则继续
 		if !backStr(tempStr) { // 截取的不为回文,跳过
 			continue
 		}

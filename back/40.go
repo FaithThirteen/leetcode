@@ -38,10 +38,10 @@ func backtracking40(n, start, target int, used map[int]bool, candidates, path []
 		}
 
 		path = append(path, candidates[i])
-		used[i] = true
+		used[i] = true  // 树枝可以重复使用
 		backtracking40(n, i+1, target, used, candidates, path)
 		path = path[:len(path)-1]
-		used[i] = false
+		used[i] = false  // 回溯，同层不可以使用
 	}
 
 }
