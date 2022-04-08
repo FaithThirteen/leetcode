@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // 假如第0天买入，第3天卖出，那么利润为：prices[3] - prices[0]。
 //
