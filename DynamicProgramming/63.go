@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 
@@ -30,8 +32,47 @@ func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 	return dp[m-1][n-1]
 }
 
-func main() {
+//func main() {
+//	fmt.Println(uniquePathsWithObstacles([][]int{{0, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}))
+//	//fmt.Println(uniquePathsWithObstacles([][]int{{0, 0, 0}, {0, 1, 0}, {0, 0, 0}}))
+//
+//
+//
+//}
 
-	fmt.Println(uniquePathsWithObstacles([][]int{{0, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}}))
-	//fmt.Println(uniquePathsWithObstacles([][]int{{0, 0, 0}, {0, 1, 0}, {0, 0, 0}}))
+func consumer(cname string, ch chan int) {
+
+	//可以循环 for i := range ch 来不断从 channel 接收值，直到它被关闭。
+	for i := range ch {
+		fmt.Println("consumer-----------", cname, ":", i)
+	}
+	fmt.Println("ch closed.")
+}
+
+func producer(pname string, ch chan int) {
+	for i := 0; i < 4; i++ {
+		fmt.Println("producer--", pname, ":", i)
+		ch <- i
+	}
+}
+
+
+func main() {
+	fmt.Println("i is :",Anonymous())
+}
+
+// 匿名函数
+func Anonymous() int {
+	var i int
+	defer func() {
+		i++
+		fmt.Println("defer2 value is ", i)
+	}()
+
+	defer func() {
+		i++
+		fmt.Println("defer1 in value is ", i)
+	}()
+
+	return i
 }
