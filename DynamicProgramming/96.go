@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"reflect"
+)
 
 // 假设 n 个节点存在二叉排序树的个数是 G (n)，令 f(i) 为以 i 为根的二叉搜索树的个数
 // G(n) = f(1)+f(2)+f(3)+f(4)+...+f(n)
@@ -21,7 +23,12 @@ func numTrees(n int) int {
 	}
 	return dp[n]
 }
-
+var runningG int32= 0
+const maxRunningG = 200
 func main() {
-	fmt.Println(numTrees(5))
+	m := make(map[string]struct{})
+	typ := reflect.TypeOf(m)
+	newInstanceValue := reflect.MakeMap(typ)
+	newInstanceValue.MapRange()
+
 }
