@@ -10,13 +10,17 @@ func bagMaxValue(bagWeight int, weight, value []int) int {
 	}
 
 	// 初始化
-	for j := bagWeight; j >= weight[0]; j-- {
-		dp[0][j] = dp[0][j-weight[0]] + value[0]
+	for j := bagWeight; j > 0; j-- {
+		dp[0][j] = dp[0][j] + value[0]
 	}
 
 	for i := 1; i < len(weight); i++ { // 遍历物品
-		for j := weight[i]; j <= bagWeight; j++ { // 遍历背包
-			dp[i][j] = max01bag(dp[i-1][j], dp[i-1][j-weight[i]]+value[i])
+		for j := 0; j <= bagWeight; j++ { // 遍历背包
+			if j < weight[i] {
+				dp[i][j] = dp[i-1][j]
+			} else {
+				dp[i][j] = max01bag(dp[i-1][j], dp[i-1][j-weight[i]]+value[i])
+			}
 		}
 	}
 	return dp[len(weight)-1][bagWeight]
