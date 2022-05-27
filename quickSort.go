@@ -67,6 +67,7 @@ func Quick2Sort(values []int) {
 func main() {
 	arr := []int{7,8,5,4,3}
 	Quick2Sort(arr)
+	fmt.Println(arr)
 }
 
 // 第三种写法
